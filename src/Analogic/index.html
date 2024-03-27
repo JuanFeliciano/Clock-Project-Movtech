@@ -3,17 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/Digital/style.css" />
-    <title>Digital Clock</title>
+    <link rel="stylesheet" href="/src/Analogic/style.css" />
+    <title>Analog Clock</title>
   </head>
   <body>
-    <div class="wrapper">
-      <div class="display">
-        <div id="time">12:00:00 PM</div>
+    <div class="analog-clock">
+      <div class="hour-container">
+        <ul class="hour-numbers">
+          <li><div class="num">3</div></li>
+          <li><div class="num">6</div></li>
+          <li><div class="num">9</div></li>
+          <li><div class="num">12</div></li>
+        </ul>
+        <ul class="hour-marks">
+          <li><div class="mark"></div></li>
+          <li><div class="mark"></div></li>
+          <li><div class="mark"></div></li>
+          <li><div class="mark"></div></li>
+          <li><div class="mark"></div></li>
+          <li><div class="mark"></div></li>
+          <li><div class="mark"></div></li>
+          <li><div class="mark"></div></li>
+        </ul>
+        <ul class="middle-lines">
+          <li><div class="line"></div></li>
+          <li><div class="line"></div></li>
+          <li><div class="line"></div></li>
+          <li><div class="line"></div></li>
+        </ul>
       </div>
-      <span></span>
-      <span></span>
+      <div class="hands-container">
+        <div class="hand hr-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand sec-hand"></div>
+      </div>
+      <div class="center-dot"></div>
     </div>
-    <script src="/src/Digital/script.js"></script>
+    <script src="/src/Analogic/script.js"></script>
   </body>
 </html>

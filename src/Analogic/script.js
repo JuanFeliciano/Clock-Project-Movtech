@@ -1,21 +1,21 @@
-const hour = document.querySelector(".hour");
-const min = document.querySelector(".min");
-const sec = document.querySelector(".sec");
+function getClock() {
+  const now = new Date();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
 
-function getTime() {
-  const time = new Date();
+  const hourHand = document.querySelector(".hr-hand");
+  const minHand = documen.querySelector(".min-hand");
+  const secHand = document.querySelector(".sec-hand");
 
-  const getHourRot = (360 / 12) * time.getHours();
-  const getMinRot = (360 / 60) * time.getMinutes();
-  const getSecRot = (360 / 60) * time.getSeconds();
+  const hourDegree = (hours % 12) * 30 + minutes / 2;
+  const minDegree = minutes * 6;
+  const secDegree = seconds * 6;
 
-  hour.style.transform = `rotate(${getHourRot}deg)`;
-  min.style.transform = `rotate(${getMinRot}deg)`;
-  sec.style.transform = `rotate(${getSecRot}deg)`;
+  hourHand.style.transform = `rotate(${hourDegree}deg)`;
+  minHand.style.transform = `rotate(${minDegree}deg)`;
+  secHand.style.transform = `rotate${secDegree}deg`;
 }
 
-setInterval(() => {
-  getTime();
-}, 1000);
-
-getTime();
+getClock();
+setInterval(getClock, 1000);
