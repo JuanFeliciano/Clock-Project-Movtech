@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/src/Digital/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+  </head>
+  <body>
+    <div class="digital-clock">
+      <i class="uil uil-ellipsis-v dot-menu-btn" id="active-menu"></i>
+      <ul class="dot-menu" id="active-menu">
+        <li class="menu-item" id="active-menu">
+          <span class="clock-format-text" id="active-menu">AM/PM format</span>
+          <div
+            class="format-switch-btn"
+            data-format="12"
+            id="active-menu"
+          ></div>
+        </li>
+      </ul>
+      <div class="time">
+        <span class="hour">00</span>
+        <span class="dots">:</span>
+        <span class="minutes">00</span>
+        <div class="right-side">
+          <span class="period">AM/PM</span>
+          <span class="seconds">00</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="/src/Digital/script.js"></script>
+  </body>
+</html>

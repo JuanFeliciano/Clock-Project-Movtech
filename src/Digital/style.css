@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2e2e44;
+}
+
+.digital-clock {
+  position: relative;
+  color: #fff;
+  background-color: #2d2f41;
+  width: 425px;
+  padding: 20px 45px;
+  box-shadow: 0 5px 25px rgba(14, 21, 37, 0.8);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.time {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hour,
+.dots,
+.minutes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  padding: 0 10px;
+  line-height: 125px;
+}
+.hour,
+.minutes {
+  font-size: 6.5em;
+  width: 125px;
+}
+.dots {
+  font-size: 5em;
+  color: #929292;
+}
+
+.hour {
+  background: -webkit-linear-gradient(90deg, #634dff, #5fd4ff);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.minutes {
+  background: -webkit-linear-gradient(90deg, #ff5e9a, #ffb060);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.right-side {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.period,
+.seconds {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+.period {
+  transform: translateY(-20px);
+  background: -webkit-linear-gradient(90deg, #f7b63f, #faf879);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.seconds {
+  transform: translateY(16px);
+  background: -webkit-linear-gradient(90deg, #24ff6d, #2f93f1);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.dot-menu-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  color: #efefef;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.dot-menu {
+  z-index: 999;
+  position: absolute;
+  top: 7px;
+  right: 5px;
+  list-style: none;
+  background: #353e54;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+.dot-menu.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clock-format-text {
+  color: #efefef;
+  font-size: 0.9em;
+  margin-right: 20px;
+}
+.format-switch-btn {
+  width: 35px;
+  height: 15px;
+  background: #485470;
+  border-radius: 75px;
+  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.format-switch-btn::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #ff5e9a;
+  border-radius: 50%;
+  box-shadow: 0 5px 25px #ff5e9a;
+  transform: translate(-10px);
+  transition: 0.3s ease;
+  transition-property: background, transform;
+}
+.format-switch-btn.active::before {
+  background: #0bff8d;
+  box-shadow: 0 5px 25px #0bff8d;
+  transform: translateX(10px);
+}
