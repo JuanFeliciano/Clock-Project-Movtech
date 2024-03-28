@@ -169,10 +169,24 @@ body {
   bottom: 0;
   color: white;
 }
-.linkButton i {
-  margin-left: 85px;
+
+.linkButton {
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 5px 25px rgba(14, 21, 37, 0.8);
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.href {
+  color: white;
   font-size: 50px;
 }
-.href {
+.hrefTwo {
+  display: flex;
+  font-size: 65px;
   color: white;
 }

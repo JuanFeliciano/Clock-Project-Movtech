@@ -2,6 +2,8 @@ const hourHand = document.querySelector(".hr-hand");
 const minHand = document.querySelector(".min-hand");
 const secHand = document.querySelector(".sec-hand");
 document.querySelector(".href").innerHTML = '<i class="uil uil-clock"></i>';
+document.querySelector(".hrefTwo").innerHTML =
+  '<i class="uil uil-stopwatch"></i>';
 
 function Clock() {
   const time = new Date();

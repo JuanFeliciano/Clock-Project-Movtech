@@ -5,6 +5,9 @@ let minutes = document.getElementById("min");
 let seconds = document.getElementById("sec");
 let counts = document.getElementById("count");
 let hours = document.getElementById("hr");
+document.querySelector(".href").innerHTML = '<i class="uil uil-clock"></i>';
+document.querySelector(".hrefTwo").innerHTML =
+  '<i class="uil uil-stopwatch"></i>';
 let hour = 0o0;
 let min = 0o0;
 let sec = 0o0;
