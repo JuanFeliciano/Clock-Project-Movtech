@@ -1,21 +1,20 @@
-function getClock() {
-  const now = new Date();
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
-  const seconds = now.getSeconds();
-
+setInterval(() => {
+  const time = new Date();
   const hourHand = document.querySelector(".hr-hand");
-  const minHand = documen.querySelector(".min-hand");
+  const minHand = document.querySelector(".min-hand");
   const secHand = document.querySelector(".sec-hand");
 
-  const hourDegree = (hours % 12) * 30 + minutes / 2;
-  const minDegree = minutes * 6;
-  const secDegree = seconds * 6;
+  let hour = time.getHours();
+  let minutes = time.getMinutes();
+  let seconds = time.getSeconds();
 
-  hourHand.style.transform = `rotate(${hourDegree}deg)`;
-  minHand.style.transform = `rotate(${minDegree}deg)`;
-  secHand.style.transform = `rotate${secDegree}deg`;
-}
+  let hourDefined = 30 * hour + minutes / 2;
+  let minDefined = 6 * minutes;
+  let secDefined = 6 * seconds;
+  hourHand.style.transform = `rotate(${hourDefined}deg)`;
+  minHand.style.transform = `rotate(${minDefined}deg)`;
+  secHand.style.transform = `rotate(${secDefined}deg)`;
+}, 1000);
 
-getClock();
-setInterval(getClock, 1000);
+const href = document.querySelector(".href");
+href.innerHTML = '<i class="uil uil-clock"></i>';

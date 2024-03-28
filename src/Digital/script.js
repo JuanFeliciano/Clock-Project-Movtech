@@ -1,5 +1,7 @@
 const html = document.querySelector("html");
 const formatSwitchBtn = document.querySelector(".format-switch-btn");
+const href = document.querySelector(".href");
+href.innerHTML = '<i class="uil uil-clock"></i>';
 
 formatSwitchBtn.addEventListener("click", () => {
   formatSwitchBtn.classList.toggle("active");
