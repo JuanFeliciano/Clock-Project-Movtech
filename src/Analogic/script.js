@@ -1,20 +1,18 @@
-setInterval(() => {
+const hourHand = document.querySelector(".hr-hand");
+const minHand = document.querySelector(".min-hand");
+const secHand = document.querySelector(".sec-hand");
+document.querySelector(".href").innerHTML = '<i class="uil uil-clock"></i>';
+
+function Clock() {
   const time = new Date();
-  const hourHand = document.querySelector(".hr-hand");
-  const minHand = document.querySelector(".min-hand");
-  const secHand = document.querySelector(".sec-hand");
+  let hour = time.getHours() * 30 + time.getMinutes() / 2;
+  let minutes = time.getMinutes() * 6;
+  let seconds = time.getSeconds() * 6;
 
-  let hour = time.getHours();
-  let minutes = time.getMinutes();
-  let seconds = time.getSeconds();
+  hourHand.style.transform = `rotate(${hour}deg)`;
+  minHand.style.transform = `rotate(${minutes}deg)`;
+  secHand.style.transform = `rotate(${seconds}deg)`;
+  requestAnimationFrame(Clock);
+}
 
-  let hourDefined = 30 * hour + minutes / 2;
-  let minDefined = 6 * minutes;
-  let secDefined = 6 * seconds;
-  hourHand.style.transform = `rotate(${hourDefined}deg)`;
-  minHand.style.transform = `rotate(${minDefined}deg)`;
-  secHand.style.transform = `rotate(${secDefined}deg)`;
-}, 1000);
-
-const href = document.querySelector(".href");
-href.innerHTML = '<i class="uil uil-clock"></i>';
+Clock();

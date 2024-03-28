@@ -1,7 +1,11 @@
-const html = document.querySelector("html");
+const hourElement = document.querySelector(".hour");
+const minutesElement = document.querySelector(".minutes");
+const secondsElement = document.querySelector(".seconds");
+const periodElement = document.querySelector(".period");
 const formatSwitchBtn = document.querySelector(".format-switch-btn");
-const href = document.querySelector(".href");
-href.innerHTML = '<i class="uil uil-clock"></i>';
+const dotMenuBtn = document.querySelector(".dot-menu-btn");
+const dotMenu = document.querySelector(".dot-menu");
+document.querySelector(".href").innerHTML = '<i class="uil uil-clock"></i>';
 
 formatSwitchBtn.addEventListener("click", () => {
   formatSwitchBtn.classList.toggle("active");
@@ -14,7 +18,7 @@ formatSwitchBtn.addEventListener("click", () => {
   }
 });
 
-function clock() {
+function Clock() {
   let today = new Date();
 
   let hour = today.getHours();
@@ -32,26 +36,17 @@ function clock() {
     hour = hour > 12 ? hour % 12 : hour;
   }
 
-  if (hour < 10) {
-    hour = "0" + hour;
-  }
-  if (minutes < 10) {
-    minutes = "0" + minutes;
-  }
-  if (seconds < 10) {
-    seconds = "0" + seconds;
-  }
+  hour = hour < 10 ? "0" + hour : hour;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
 
-  document.querySelector(".hour").innerHTML = hour;
-  document.querySelector(".minutes").innerHTML = minutes;
-  document.querySelector(".seconds").innerHTML = seconds;
-  document.querySelector(".period").innerHTML = period;
+  hourElement.textContent = hour;
+  minutesElement.textContent = minutes;
+  secondsElement.textContent = seconds;
+  periodElement.textContent = period;
 
-  saveData();
+  requestAnimationFrame(Clock);
 }
-
-const dotMenuBtn = document.querySelector(".dot-menu-btn");
-const dotMenu = document.querySelector(".dot-menu");
 
 dotMenuBtn.addEventListener("click", () => {
   dotMenu.classList.toggle("active");
@@ -63,13 +58,4 @@ document.addEventListener("click", (e) => {
   }
 });
 
-let updateClock = setInterval(clock, 1000);
-
-function saveData() {
-  localStorage.setItem("data").html;
-}
-function showData() {
-  localStorage.getItem("data");
-}
-
-showData();
+Clock();
