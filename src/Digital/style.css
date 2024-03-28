@@ -53,7 +53,7 @@ body {
 }
 .dots {
   font-size: 5em;
-  color: #929292;
+  color: #ffffff;
 }
 
 .hour {
@@ -156,8 +156,8 @@ body {
   transition-property: background, transform;
 }
 .format-switch-btn.active::before {
-  background: #0bff8d;
-  box-shadow: 0 5px 25px #0bff8d;
+  background: #e9f0ed;
+  box-shadow: 0 5px 25px #d8e9e1;
   transform: translateX(10px);
 }
 .linkButton h1 {
