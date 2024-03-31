@@ -6,6 +6,8 @@ const formatSwitchBtn = document.querySelector(".format-switch-btn");
 const dotMenuBtn = document.querySelector(".dot-menu-btn");
 const dotMenu = document.querySelector(".dot-menu");
 document.querySelector(".href").innerHTML = '<i class="uil uil-clock"></i>';
+document.querySelector(".hrefTwo").innerHTML =
+  '<i class="uil uil-stopwatch"></i>';
 
 formatSwitchBtn.addEventListener("click", () => {
   formatSwitchBtn.classList.toggle("active");
