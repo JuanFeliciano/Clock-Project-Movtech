@@ -1,6 +1,7 @@
 const startBtn = document.getElementById("start");
 const stopBtn = document.getElementById("stop");
 const resetBtn = document.getElementById("reset");
+const containerTime = document.querySelector(".container-time");
 let minutes = document.getElementById("min");
 let seconds = document.getElementById("sec");
 let counts = document.getElementById("count");
@@ -13,6 +14,17 @@ let min = 0o0;
 let sec = 0o0;
 let count = 0o0;
 
+class TimeTotal {
+  constructor(hour, min, sec, count) {
+    this.hour = hour;
+    this.min = min;
+    this.sec = sec;
+    this.count = count;
+  }
+}
+
+let listTimes = [];
+
 startBtn.addEventListener("click", function () {
   timer = true;
   StopWatch();
@@ -23,6 +35,10 @@ stopBtn.addEventListener("click", function () {
 });
 
 resetBtn.addEventListener("click", function () {
+  const li = document.createElement("li");
+  const newTime = new TimeTotal(hour, min, sec, count);
+  listTimes.push(newTime);
+  li.textContent = `${hour}Hr ${min} Min ${sec} Sec ${count} ml`;
   timer = false;
   hour = 0;
   min = 0;
@@ -32,46 +48,36 @@ resetBtn.addEventListener("click", function () {
   minutes.innerHTML = "00";
   seconds.innerHTML = "00";
   counts.innerHTML = "00";
+
+  containerTime.appendChild(li);
 });
 
 function StopWatch() {
   if (timer) {
     count++;
 
-    if (count == 100) {
+    if (count == 99) {
       sec++;
       count = 0;
     }
-    if (min == 60) {
+    if (min == 59) {
       hour++;
       min = 0;
     }
-    if (sec == 60) {
+    if (sec == 59) {
       min++;
       sec = 0;
     }
 
-    let countString = count;
-    let hourString = hour;
-    let minString = min;
-    let secString = sec;
+    hour = hour.toString().padStart(2, "0");
+    min = min.toString().padStart(2, "0");
+    sec = sec.toString().padStart(2, "0");
+    count = count.toString().padStart(2, "0");
 
-    if (hour < 10) {
-      hourString = "0" + hourString;
-    }
-    if (min < 10) {
-      minString = "0" + minString;
-    }
-    if (sec < 10) {
-      secString = "0" + secString;
-    }
-    if (count < 10) {
-      countString = "0" + countString;
-    }
-    hours.innerHTML = hourString;
-    minutes.innerHTML = minString;
-    seconds.innerHTML = secString;
-    counts.innerHTML = countString;
+    hours.innerHTML = hour;
+    minutes.innerHTML = min;
+    seconds.innerHTML = sec;
+    counts.innerHTML = count;
 
     setTimeout(StopWatch, 10);
   }

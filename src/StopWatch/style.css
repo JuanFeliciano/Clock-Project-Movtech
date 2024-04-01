@@ -69,3 +69,15 @@ body {
   font-size: 65px;
   color: white;
 }
+.container-time {
+  list-style: none;
+  color: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 5px 25px rgba(14, 21, 37, 0.8);
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
