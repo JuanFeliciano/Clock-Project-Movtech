@@ -1,6 +1,9 @@
 const startBtn = document.getElementById("start");
 const stopBtn = document.getElementById("stop");
 const resetBtn = document.getElementById("reset");
+const saveBtn = document.getElementById("save");
+const containerTime = document.querySelector(".container-time");
+const deleteAllBtn = document.getElementById("deleteAll");
 let minutes = document.getElementById("min");
 let seconds = document.getElementById("sec");
 let counts = document.getElementById("count");
@@ -12,17 +15,30 @@ let hour = 0o0;
 let min = 0o0;
 let sec = 0o0;
 let count = 0o0;
+let nextId = 0;
 
-startBtn.addEventListener("click", function () {
+class TimeTotal {
+  constructor(hour, min, sec, count, id) {
+    this.hour = hour;
+    this.min = min;
+    this.sec = sec;
+    this.count = count;
+    this.id = id;
+  }
+}
+
+let listTimes = [];
+
+function startWatch() {
   timer = true;
   StopWatch();
-});
+}
 
-stopBtn.addEventListener("click", function () {
+function stopWatch() {
   timer = false;
-});
+}
 
-resetBtn.addEventListener("click", function () {
+function resetWatch() {
   timer = false;
   hour = 0;
   min = 0;
@@ -32,13 +48,50 @@ resetBtn.addEventListener("click", function () {
   minutes.innerHTML = "00";
   seconds.innerHTML = "00";
   counts.innerHTML = "00";
-});
+}
+
+function saveWatch() {
+  if ((hour, min, sec, count != 0)) {
+    const li = document.createElement("li");
+    const newTime = new TimeTotal(hour, min, sec, count, nextId);
+    listTimes.push(newTime);
+    li.id = "time" + nextId;
+    nextId++;
+    li.textContent = `${hour}Hr ${min} Min ${sec} Sec ${count} ml`;
+
+    const delBtn = document.createElement("button");
+    delBtn.innerHTML = "Del";
+    delBtn.addEventListener("click", function () {
+      deleteTime(newTime.id);
+    });
+    li.appendChild(delBtn);
+
+    containerTime.appendChild(li);
+  }
+}
+
+function deleteTime(id) {
+  const liElement = document.getElementById("time-" + id);
+  if (liElement) {
+    const index = listTimes.findIndex((time) => time.id === id);
+    if (index !== -1) {
+      listTimes.splice(index, 1);
+    }
+    containerTime.removeChild(liElement);
+  }
+}
+
+function deleteAllTimes() {
+  listTimes = [];
+  containerTime.innerHTML = "";
+  nextId = 0; // Resetar o próximo ID disponível
+}
 
 function StopWatch() {
   if (timer) {
     count++;
 
-    if (count == 100) {
+    if (count == 99) {
       sec++;
       count = 0;
     }
@@ -51,28 +104,22 @@ function StopWatch() {
       sec = 0;
     }
 
-    let countString = count;
-    let hourString = hour;
-    let minString = min;
-    let secString = sec;
+    hour = hour.toString().padStart(2, "0");
+    min = min.toString().padStart(2, "0");
+    sec = sec.toString().padStart(2, "0");
+    count = count.toString().padStart(2, "0");
 
-    if (hour < 10) {
-      hourString = "0" + hourString;
-    }
-    if (min < 10) {
-      minString = "0" + minString;
-    }
-    if (sec < 10) {
-      secString = "0" + secString;
-    }
-    if (count < 10) {
-      countString = "0" + countString;
-    }
-    hours.innerHTML = hourString;
-    minutes.innerHTML = minString;
-    seconds.innerHTML = secString;
-    counts.innerHTML = countString;
+    hours.innerHTML = hour;
+    minutes.innerHTML = min;
+    seconds.innerHTML = sec;
+    counts.innerHTML = count;
 
     setTimeout(StopWatch, 10);
   }
 }
+
+startBtn.addEventListener("click", startWatch);
+stopBtn.addEventListener("click", stopWatch);
+resetBtn.addEventListener("click", resetWatch);
+saveBtn.addEventListener("click", saveWatch);
+deleteAllBtn.addEventListener("click", deleteAllTimes);

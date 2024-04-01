@@ -29,21 +29,12 @@ body {
 }
 #start,
 #stop,
-#reset {
+#reset,
+#save {
   margin: 10px;
   padding: 10px;
   font-weight: 500;
   cursor: pointer;
-}
-#start {
-  border: none;
-  border-radius: 5px;
-}
-#stop {
-  border: none;
-  border-radius: 5px;
-}
-#reset {
   border: none;
   border-radius: 5px;
 }
@@ -68,4 +59,16 @@ body {
   display: flex;
   font-size: 65px;
   color: white;
+}
+.container-time {
+  list-style: none;
+  color: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 5px 25px rgba(14, 21, 37, 0.8);
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
