@@ -29,21 +29,12 @@ body {
 }
 #start,
 #stop,
-#reset {
+#reset,
+#save {
   margin: 10px;
   padding: 10px;
   font-weight: 500;
   cursor: pointer;
-}
-#start {
-  border: none;
-  border-radius: 5px;
-}
-#stop {
-  border: none;
-  border-radius: 5px;
-}
-#reset {
   border: none;
   border-radius: 5px;
 }
