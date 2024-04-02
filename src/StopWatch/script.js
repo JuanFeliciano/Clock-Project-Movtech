@@ -17,6 +17,8 @@ let sec = 0o0;
 let count = 0o0;
 let nextId = 0;
 
+let listTimes = JSON.parse(localStorage.getItem("listTimes")) || [];
+
 class TimeTotal {
   constructor(hour, min, sec, count, id) {
     this.hour = hour;
@@ -26,8 +28,6 @@ class TimeTotal {
     this.id = id;
   }
 }
-
-let listTimes = [];
 
 function startWatch() {
   timer = true;
@@ -69,6 +69,7 @@ function saveWatch() {
 
     containerTime.appendChild(li);
   }
+  localStorage.setItem("listTimes", JSON.stringify(listTimes));
 }
 
 function deleteTime(id) {
@@ -77,6 +78,7 @@ function deleteTime(id) {
     const index = listTimes.findIndex((time) => time.id === id);
     listTimes.splice(index, 1);
     containerTime.removeChild(liElement);
+    localStorage.setItem("listTimes", JSON.stringify(listTimes));
   }
 }
 
@@ -84,6 +86,7 @@ function deleteAllTimes() {
   listTimes = [];
   containerTime.innerHTML = "";
   nextId = 0;
+  localStorage.removeItem("listTimes");
 }
 
 function StopWatch() {
@@ -126,4 +129,18 @@ deleteAllBtn.addEventListener("click", () => {
   if (confirmation) {
     deleteAllTimes();
   }
+});
+listTimes.forEach((time) => {
+  const li = document.createElement("li");
+  li.id = time.id;
+  li.textContent = `${time.hour}Hr ${time.min}Min ${time.sec}Sec ${time.count}ml`;
+
+  const delBtn = document.createElement("button");
+  delBtn.classList.add("delUnic");
+  delBtn.innerHTML = "Delete";
+  delBtn.addEventListener("click", function () {
+    deleteTime(time.id);
+  });
+  li.appendChild(delBtn);
+  containerTime.appendChild(li);
 });

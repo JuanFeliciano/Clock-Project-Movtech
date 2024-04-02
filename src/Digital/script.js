@@ -9,15 +9,18 @@ document.querySelector(".href").innerHTML = '<i class="uil uil-clock"></i>';
 document.querySelector(".hrefTwo").innerHTML =
   '<i class="uil uil-stopwatch"></i>';
 
+let formatValue = localStorage.getItem("formatValue") || 24;
+formatSwitchBtn.setAttribute("data-format", formatValue);
+formatSwitchBtn.classList.toggle("active", formatValue === "24");
+
 formatSwitchBtn.addEventListener("click", () => {
   formatSwitchBtn.classList.toggle("active");
-  let formatValue = formatSwitchBtn.getAttribute("data-format");
+  formatValue = formatSwitchBtn.getAttribute("data-format");
 
-  if (formatValue === "24") {
-    formatSwitchBtn.setAttribute("data-format", "12");
-  } else {
-    formatSwitchBtn.setAttribute("data-format", "24");
-  }
+  formatValue = formatValue === "24" ? "12" : "24";
+  formatSwitchBtn.setAttribute("data-format", formatValue);
+
+  localStorage.setItem("formatValue", formatValue);
 });
 
 function Clock() {
@@ -32,7 +35,7 @@ function Clock() {
     period = "PM";
   }
 
-  let formatValue = formatSwitchBtn.getAttribute("data-format");
+  formatValue = formatSwitchBtn.getAttribute("data-format");
 
   if (formatValue === "12") {
     hour = hour > 12 ? hour % 12 : hour;
