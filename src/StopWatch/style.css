@@ -43,21 +43,32 @@ body {
   border: none;
   border-radius: 5px;
 }
+#start:hover,
+#stop:hover,
+#reset:hover {
+  background: rgb(196, 188, 188);
+}
 #delete {
   background: crimson;
+}
+#delete:hover {
+  background: rgb(228, 56, 90);
+}
+#save:hover {
+  background: rgb(90, 224, 90);
 }
 #save {
   background: limegreen;
 }
 .delUnic {
   margin-left: 10px;
-  margin-top: 5px;
   width: 55px;
   padding: 5px;
   font-weight: 500;
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .linkButton {
@@ -76,6 +87,7 @@ body {
   color: white;
   font-size: 50px;
 }
+
 .hrefTwo {
   display: flex;
   font-size: 65px;
@@ -95,4 +107,9 @@ body {
 }
 .container-time {
   list-style: none;
+}
+.container-time li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1px;
 }
