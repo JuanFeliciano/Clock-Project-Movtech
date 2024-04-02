@@ -3,7 +3,7 @@ const stopBtn = document.getElementById("stop");
 const resetBtn = document.getElementById("reset");
 const saveBtn = document.getElementById("save");
 const containerTime = document.querySelector(".container-time");
-const deleteAllBtn = document.getElementById("deleteAll");
+const deleteAllBtn = document.getElementById("delete");
 let minutes = document.getElementById("min");
 let seconds = document.getElementById("sec");
 let counts = document.getElementById("count");
@@ -55,12 +55,13 @@ function saveWatch() {
     const li = document.createElement("li");
     const newTime = new TimeTotal(hour, min, sec, count, nextId);
     listTimes.push(newTime);
-    li.id = "time" + nextId;
+    li.id = nextId;
     nextId++;
     li.textContent = `${hour}Hr ${min} Min ${sec} Sec ${count} ml`;
 
     const delBtn = document.createElement("button");
-    delBtn.innerHTML = "Del";
+    delBtn.classList.add("delUnic");
+    delBtn.innerHTML = "Delete";
     delBtn.addEventListener("click", function () {
       deleteTime(newTime.id);
     });
@@ -71,12 +72,10 @@ function saveWatch() {
 }
 
 function deleteTime(id) {
-  const liElement = document.getElementById("time-" + id);
+  const liElement = document.getElementById(id);
   if (liElement) {
     const index = listTimes.findIndex((time) => time.id === id);
-    if (index !== -1) {
-      listTimes.splice(index, 1);
-    }
+    listTimes.splice(index, 1);
     containerTime.removeChild(liElement);
   }
 }
@@ -84,7 +83,7 @@ function deleteTime(id) {
 function deleteAllTimes() {
   listTimes = [];
   containerTime.innerHTML = "";
-  nextId = 0; // Resetar o próximo ID disponível
+  nextId = 0;
 }
 
 function StopWatch() {
@@ -122,4 +121,9 @@ startBtn.addEventListener("click", startWatch);
 stopBtn.addEventListener("click", stopWatch);
 resetBtn.addEventListener("click", resetWatch);
 saveBtn.addEventListener("click", saveWatch);
-deleteAllBtn.addEventListener("click", deleteAllTimes);
+deleteAllBtn.addEventListener("click", () => {
+  const confirmation = confirm("Are you sure about this action?");
+  if (confirmation) {
+    deleteAllTimes();
+  }
+});
