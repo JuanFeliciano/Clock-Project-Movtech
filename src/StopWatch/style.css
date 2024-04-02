@@ -27,12 +27,33 @@ body {
   align-items: center;
   flex-direction: column;
 }
+#buttons {
+  display: flex;
+  flex-direction: row;
+}
 #start,
 #stop,
 #reset,
-#save {
+#save,
+#delete {
   margin: 10px;
   padding: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+#delete {
+  background: crimson;
+}
+#save {
+  background: limegreen;
+}
+.delUnic {
+  margin-left: 10px;
+  margin-top: 5px;
+  width: 55px;
+  padding: 5px;
   font-weight: 500;
   cursor: pointer;
   border: none;
@@ -60,7 +81,7 @@ body {
   font-size: 65px;
   color: white;
 }
-.container-time {
+.list-times {
   list-style: none;
   color: white;
   padding: 40px;
@@ -71,4 +92,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.container-time {
+  list-style: none;
 }
