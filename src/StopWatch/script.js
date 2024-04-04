@@ -3,6 +3,7 @@ const stopBtn = document.getElementById("stop");
 const resetBtn = document.getElementById("reset");
 const saveBtn = document.getElementById("save");
 const containerTime = document.querySelector(".container-time");
+const time = document.getElementById("time");
 const deleteAllBtn = document.getElementById("delete");
 let minutes = document.getElementById("min");
 let seconds = document.getElementById("sec");
@@ -68,17 +69,20 @@ function saveWatch() {
     li.appendChild(delBtn);
 
     containerTime.appendChild(li);
+    localStorage.setItem("listTimes", JSON.stringify(listTimes));
   }
-  localStorage.setItem("listTimes", JSON.stringify(listTimes));
 }
 
 function deleteTime(id) {
-  const liElement = document.getElementById(id);
-  if (liElement) {
-    const index = listTimes.findIndex((time) => time.id === id);
-    listTimes.splice(index, 1);
-    containerTime.removeChild(liElement);
-    localStorage.setItem("listTimes", JSON.stringify(listTimes));
+  const confirmation = confirm("Are you sure about this?");
+  if (confirmation) {
+    const liElement = document.getElementById(id);
+    if (liElement) {
+      const index = listTimes.findIndex((time) => time.id === id);
+      listTimes.splice(index, 1);
+      containerTime.removeChild(liElement);
+      localStorage.setItem("listTimes", JSON.stringify(listTimes));
+    }
   }
 }
 
@@ -93,7 +97,7 @@ function StopWatch() {
   if (timer) {
     count++;
 
-    if (count == 99) {
+    if (count == 100) {
       sec++;
       count = 0;
     }
@@ -116,7 +120,7 @@ function StopWatch() {
     seconds.innerHTML = sec;
     counts.innerHTML = count;
 
-    setTimeout(StopWatch, 10);
+    requestAnimationFrame(StopWatch);
   }
 }
 
@@ -125,7 +129,7 @@ stopBtn.addEventListener("click", stopWatch);
 resetBtn.addEventListener("click", resetWatch);
 saveBtn.addEventListener("click", saveWatch);
 deleteAllBtn.addEventListener("click", () => {
-  const confirmation = confirm("Are you sure about this action?");
+  const confirmation = confirm("Are you sure about this?");
   if (confirmation) {
     deleteAllTimes();
   }
