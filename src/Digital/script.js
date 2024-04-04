@@ -41,9 +41,9 @@ function Clock() {
     hour = hour > 12 ? hour % 12 : hour;
   }
 
-  hour = hour < 10 ? "0" + hour : hour;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
+  hour = hour.toString().padStart(2, "0");
+  minutes = minutes.toString().padStart(2, "0");
+  seconds = seconds.toString().padStart(2, "0");
 
   hourElement.textContent = hour;
   minutesElement.textContent = minutes;
