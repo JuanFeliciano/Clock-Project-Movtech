@@ -30,6 +30,8 @@ class TimeTotal {
   }
 }
 
+let timer = false;
+
 function startWatch() {
   timer = true;
   StopWatch();
@@ -147,4 +149,5 @@ listTimes.forEach((time) => {
   });
   li.appendChild(delBtn);
   containerTime.appendChild(li);
+  gfg;
 });

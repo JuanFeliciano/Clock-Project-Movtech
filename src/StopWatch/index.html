@@ -38,14 +38,23 @@
     </div>
     <div class="linkButton">
       <h1>Analog Clock</h1>
-      <a href="http://127.0.0.1:5500/src/Analogic/index.html" class="href"></a>
+      <a href="http://127.0.0.1:5501/src/Analogic/index.html" class="href"></a>
 
       <h1>Digital Clock</h1>
       <a
-        href="http://127.0.0.1:5500/src/Digital/index.html"
+        href="http://127.0.0.1:5501/src/Digital/index.html"
         class="hrefTwo"
       ></a>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+      const body = document.querySelector("body");
+      gsap.to(body, {
+        opacity: 1,
+        duration: 1.5,
+      });
+    </script>
     <script src="/src/StopWatch/script.js"></script>
   </body>
 </html>

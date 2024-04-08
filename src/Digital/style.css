@@ -28,6 +28,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  opacity: 0;
 }
 .time {
   position: relative;
@@ -179,6 +180,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 0;
 }
 
 .href {

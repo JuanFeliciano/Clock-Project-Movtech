@@ -25,6 +25,7 @@ body {
   align-items: center;
   border-radius: 50%;
   box-shadow: 0 5px 25px rgba(14, 21, 37, 0.8);
+  opacity: 0;
 }
 
 .analog-clock::before {
@@ -219,6 +220,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 0;
 }
 
 .href {
