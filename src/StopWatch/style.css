@@ -13,6 +13,7 @@ body {
   flex-direction: column;
   opacity: 0;
 }
+
 .container {
   position: relative;
   color: #fff;

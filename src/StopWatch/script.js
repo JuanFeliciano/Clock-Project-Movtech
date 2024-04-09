@@ -60,7 +60,9 @@ function saveWatch() {
     listTimes.push(newTime);
     li.id = nextId;
     nextId++;
-    li.textContent = `${hour}Hr ${min} Min ${sec} Sec ${count} ml`;
+    li.textContent = `${hour} Hr ${min} Min ${sec} Sec ${(count % 100)
+      .toString()
+      .padStart(2, "0")} ml`;
 
     const delBtn = document.createElement("button");
     delBtn.classList.add("delUnic");
@@ -95,36 +97,55 @@ function deleteAllTimes() {
   localStorage.removeItem("listTimes");
 }
 
+let startTime;
+
+function startWatch() {
+  timer = true;
+  startTime = performance.now();
+  StopWatch();
+}
+
 function StopWatch() {
   if (timer) {
-    count++;
+    const elapsedTime = performance.now() - startTime;
+    count = Math.floor(elapsedTime);
 
-    if (count == 100) {
-      sec++;
-      count = 0;
-    }
-    if (min == 60) {
-      hour++;
-      min = 0;
-    }
-    if (sec == 60) {
-      min++;
-      sec = 0;
-    }
+    const totalSeconds = Math.floor(count / 1000);
+    hour = Math.floor(totalSeconds / 3600);
+    min = Math.floor((totalSeconds % 3600) / 60);
+    sec = totalSeconds % 60;
 
     hour = hour.toString().padStart(2, "0");
     min = min.toString().padStart(2, "0");
     sec = sec.toString().padStart(2, "0");
-    count = count.toString().padStart(2, "0");
 
     hours.innerHTML = hour;
     minutes.innerHTML = min;
     seconds.innerHTML = sec;
-    counts.innerHTML = count;
+    counts.innerHTML = (count % 100).toString().padStart(2, "0");
 
     requestAnimationFrame(StopWatch);
   }
 }
+
+listTimes.forEach((time) => {
+  const li = document.createElement("li");
+  li.id = time.id;
+  li.textContent = `${time.hour} Hr ${time.min} Min ${time.sec} Sec ${(
+    time.count % 100
+  )
+    .toString()
+    .padStart(2, "0")}ml`;
+
+  const delBtn = document.createElement("button");
+  delBtn.classList.add("delUnic");
+  delBtn.innerHTML = "Delete";
+  delBtn.addEventListener("click", function () {
+    deleteTime(time.id);
+  });
+  li.appendChild(delBtn);
+  containerTime.appendChild(li);
+});
 
 startBtn.addEventListener("click", startWatch);
 stopBtn.addEventListener("click", stopWatch);
@@ -135,19 +156,4 @@ deleteAllBtn.addEventListener("click", () => {
   if (confirmation) {
     deleteAllTimes();
   }
-});
-listTimes.forEach((time) => {
-  const li = document.createElement("li");
-  li.id = time.id;
-  li.textContent = `${time.hour}Hr ${time.min}Min ${time.sec}Sec ${time.count}ml`;
-
-  const delBtn = document.createElement("button");
-  delBtn.classList.add("delUnic");
-  delBtn.innerHTML = "Delete";
-  delBtn.addEventListener("click", function () {
-    deleteTime(time.id);
-  });
-  li.appendChild(delBtn);
-  containerTime.appendChild(li);
-  gfg;
 });
